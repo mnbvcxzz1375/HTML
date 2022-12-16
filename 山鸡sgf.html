@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img{
+            width: 1200px;
+            height: 600px;
+            left:200px;
+            margin: 0 auto;
+            padding: 0px;
+            border: 0px ;
+            /* 设置相对位置，只有将外层元素设置相对位置，子元素设置绝对位置，才能将子元素放置在父元素内部的特定位置 */
+            position: relative;
+        }
+        #img>.lleft{
+            
+            width: 23px;
+            height: 40px;
+            /* 设置子元素绝对位置 */
+            position: absolute;
+            left: -200px;
+            top: 48%;
+        }
+        #img>.rright{
+            width: 28px;
+            height: 42px;
+            position: absolute;
+            right: -200px;
+            top: 48%;
+        }
+    </style>
+</head>
+<body>
+    <div id="img">
+            <!-- 单击图片进入百度 -->
+            <a href="山鸡.html">
+                <img id="imgs" src="picture/begin.png" alt="返回主页">
+            </a>
+        <div class="lleft">
+            <img src="picture/left.png" alt="无法显示">           
+        </div>
+        <div class="rright">
+            <img src="picture/right.png" alt="无法显示">
+        </div>
+    </div>
+    <script>
+        var index=0;
+        var img_data=['picture/s1.jpg','picture/s2.jpg','picture/s3.jpg','picture/ss1.jpeg','picture/ss2.jpeg','picture/ss3.jpeg','picture/ss4.jpeg','picture/ss5.jpeg']
+        // 获得相应元素对象
+        var rright=document.getElementsByClassName("rright")[0];
+        var llef=document.getElementsByClassName("lleft")[0];
+        var img=document.getElementById("imgs");
+        // 通过对象的单击事件触动函数调用函数实现图片切换
+        rright.onclick=function(){
+            index++;
+            if(index==img_data.length) index=0;
+            img.setAttribute('src',img_data[index]);
+        }
+        llef.onclick=function(){
+            if(index==0) index=img_data.length;
+            index--;
+            img.setAttribute('src',img_data[index]);
+        }
+    </script>
+</body>
+<body>
+    <h1>
+        <em><span style="text-align:center">点击图片返回上页</span></em>
+    </h1>
+</body>
+</html>
+
